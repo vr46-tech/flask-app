@@ -16,6 +16,11 @@ SHIPPING_PARTNER_API_URL = "https://api.speedy.bg/v1"
 SHIPPING_PARTNER_USERNAME = "your_speedy_username"
 SHIPPING_PARTNER_PASSWORD = "your_speedy_password"
 
+# Root endpoint for health check or status
+@app.route('/')
+def home():
+    return "Shopify and Shipping Partner Integration is running!"
+
 # Webhook endpoint to handle Shopify order creation
 @app.route('/webhook/orders', methods=['POST'])
 def handle_order_webhook():
