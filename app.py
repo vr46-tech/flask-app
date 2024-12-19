@@ -24,6 +24,10 @@ def home():
 # Webhook endpoint to handle Shopify order creation
 @app.route('/webhook/orders', methods=['POST'])
 def handle_order_webhook():
+    logging.info(f"Raw request data: {request.data}")
+    data = request.get_json()
+    logging.info(f"Parsed JSON data: {data}")
+    return jsonify({"message": "Webhook received successfully"}), 200
     try:
         data = request.get_json()
         logging.info(f"Received Shopify order: {data}")
